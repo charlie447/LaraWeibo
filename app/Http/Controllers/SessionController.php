@@ -20,7 +20,7 @@ class SessionController extends Controller
         'password' => 'required'
       ]);
 
-      if (Auth::attempt($credentials)) {
+      if (Auth::attempt($credentials), $request->has('remember')) {
         // login successfully
         session()->flash('success', "欢迎回来，勇士。");
         // Auth::user() 方法来获取 当前登录用户 的信息
