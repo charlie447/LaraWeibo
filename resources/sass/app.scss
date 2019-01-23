@@ -21,7 +21,12 @@ $navbar-color: #3c3e42;
 /* universal */
 
 body {
-  padding-top: 60px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+nav.navbar.navbar-expand-lg {
+    margin-bottom: 20px;
 }
 
 section {
@@ -121,7 +126,7 @@ section.user_info{
     max-width: 70px;
 
   }
-  
+
   h1{
     font-size: 1.4em;
     letter-spacing: -1px;
