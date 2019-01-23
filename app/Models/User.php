@@ -35,13 +35,5 @@ class User extends Authenticatable
       return "http://www.gravatar.com/avatar/$hash?s=$size";
     }
 
-    public function store(Request $request)
-    {
-      $this->validate($request, [
-        'name' => 'required|max:50',
-        'email' => 'required|email|unique:users|max:255',
-        'password' => 'required|confirmed|min:6'
-      ]);
-      return;
-    }
+
 }
