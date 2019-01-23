@@ -31,4 +31,11 @@ class SessionController extends Controller
         return redirect()->back()->withInput();
       }
     }
+
+    public function destroy()
+    {
+      Auth::logout();
+      session()->flash('success', "May the force be with you.");
+      return redirect('login');
+    }
 }

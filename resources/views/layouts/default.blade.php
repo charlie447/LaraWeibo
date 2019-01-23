@@ -26,6 +26,7 @@
     </div>
   </div>
   </body>
+  <script src="{{ mix('js/app.js') }}"></script>
   <script type="text/javascript">
 
   </script>
