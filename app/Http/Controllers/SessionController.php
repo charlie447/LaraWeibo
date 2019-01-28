@@ -27,11 +27,20 @@ class SessionController extends Controller
       ]);
 
       if (Auth::attempt($credentials, $request->has('remember'))) {
-        // login successfully
-        session()->flash('success', "欢迎回来，勇士。");
-        // Auth::user() 方法来获取 当前登录用户 的信息
-        $fallback = route('users.show', Auth::user());
-        return redirect()->intended($fallback);
+        if (Auth::user()->activated) {
+          // if the user has been activated through email
+          // login successfully
+          session()->flash('success', "欢迎回来，勇士。");
+          // Auth::user() 方法来获取 当前登录用户 的信息
+          $fallback = route('users.show', Auth::user());
+          return redirect()->intended($fallback);
+        }else {
+          // needs to activate the account
+          Auth::logout();
+          session()->flash('warning', '你的账号未激活，请检查邮箱中的注册邮件进行激活。');
+          return redirect('/');
+        }
+
       }else {
         // Login error
         session()->flash('danger', '抱歉，您的用户名和密码不匹配。');
